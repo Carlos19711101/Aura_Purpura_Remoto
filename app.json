@@ -25,6 +25,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "SUPABASE_URL": "https://lxirhluyuyemmvfvmlpo.supabase.co",
+      "SUPABASE_ANON_KEY": "sb_publishable_i7TDQx6x0XARmxqe3eQCfg_pZsn6mUE",
+      "LIVEKIT_URL": "wss://aura-purpura-v51d4ipz.livekit.cloud",
+      "LIVEKIT_API_KEY": "APICERbX7xsr6Jv"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ]
   }
 }
