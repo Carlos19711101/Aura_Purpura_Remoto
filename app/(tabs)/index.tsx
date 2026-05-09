@@ -1,25 +1,9 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { supabase } from '../../src/services/supabase';
 
 export default function HomeScreen() {
   const router = useRouter();
-  const [connectionStatus, setConnectionStatus] = useState('Verificando conexión...');
-
-  useEffect(() => {
-    const checkConnection = async () => {
-      // Intenta obtener un registro cualquiera de la tabla profiles (vacía, pero la conexión se prueba)
-      const { error } = await supabase.from('profiles').select('*').limit(1);
-      if (error) {
-        setConnectionStatus(`Error de conexión: ${error.message}`);
-      } else {
-        setConnectionStatus('✅ Conectado a Supabase');
-      }
-    };
-    checkConnection();
-  }, []);
 
   const handleAccompaniment = () => {
     router.push('/alert');
@@ -33,9 +17,6 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.appName}>AURA PÚRPURA</Text>
       <Text style={styles.tagline}>Nunca caminas sola</Text>
-
-      {/* Indicador de conexión */}
-      <Text style={styles.connectionStatus}>{connectionStatus}</Text>
 
       <TouchableOpacity style={styles.buttonMain} onPress={handleAccompaniment} activeOpacity={0.8}>
         <Ionicons name="shield-checkmark" size={32} color="#FFF" />
@@ -68,13 +49,7 @@ const styles = StyleSheet.create({
   tagline: {
     fontSize: 16,
     color: '#D8BFD8',
-    marginBottom: 20,
-  },
-  connectionStatus: {
-    fontSize: 14,
-    color: '#9370DB',
-    marginBottom: 40,
-    textAlign: 'center',
+    marginBottom: 60,
   },
   buttonMain: {
     flexDirection: 'row',
